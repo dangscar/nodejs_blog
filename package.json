@@ -1,0 +1,30 @@
+{
+  "name": "blog",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon --inspect index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dangscar/nodejs_blog.git"
+  },
+  "keywords": [
+    "node",
+    "js"
+  ],
+  "author": "dang",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dangscar/nodejs_blog/issues"
+  },
+  "homepage": "https://github.com/dangscar/nodejs_blog#readme",
+  "dependencies": {
+    "express": "^5.2.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}
