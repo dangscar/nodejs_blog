@@ -1,0 +1,264 @@
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+
+    .premium-form-wrapper {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        padding: 60px 15px;
+        background-color: #f8fafc;
+        position: relative;
+        min-height: 100vh;
+        overflow: hidden;
+    }
+
+    .premium-card {
+        background: #ffffff;
+        border-radius: 24px;
+        box-shadow: 0 24px 48px -12px rgba(16, 24, 40, 0.08);
+        padding: 48px;
+        position: relative;
+        z-index: 10;
+        border: 1px solid rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(20px);
+    }
+
+    .premium-header {
+        text-align: center;
+        margin-bottom: 40px;
+    }
+
+    .premium-title {
+        color: #0f172a;
+        font-weight: 700;
+        font-size: 2.25rem;
+        margin-bottom: 12px;
+        letter-spacing: -0.02em;
+    }
+
+    .premium-subtitle {
+        color: #64748b;
+        font-size: 1.05rem;
+        font-weight: 400;
+    }
+
+    .form-group-custom {
+        margin-bottom: 24px;
+    }
+
+    .premium-label {
+        font-weight: 600;
+        color: #334155;
+        margin-bottom: 8px;
+        font-size: 0.9rem;
+        display: block;
+    }
+
+    .premium-input {
+        border-radius: 12px;
+        border: 1.5px solid #e2e8f0;
+        padding: 14px 16px;
+        font-size: 1rem;
+        color: #0f172a;
+        transition: all 0.25s ease;
+        background-color: #ffffff;
+        width: 100%;
+    }
+
+    .premium-input:focus {
+        border-color: #6366f1;
+        box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.15);
+        outline: none;
+    }
+
+    .premium-input::placeholder {
+        color: #cbd5e1;
+    }
+    
+    textarea.premium-input {
+        resize: vertical;
+        min-height: 120px;
+    }
+
+    .btn-premium {
+        background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+        color: #ffffff;
+        border: none;
+        border-radius: 12px;
+        padding: 16px 32px;
+        font-weight: 600;
+        font-size: 1.1rem;
+        width: 100%;
+        margin-top: 16px;
+        transition: all 0.3s ease;
+        box-shadow: 0 10px 25px -5px rgba(79, 70, 229, 0.4);
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .btn-premium:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 20px 30px -10px rgba(79, 70, 229, 0.5);
+    }
+
+    .btn-premium:active {
+        transform: translateY(1px);
+    }
+
+    /* Decorative Background Elements */
+    .shape-blob {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(60px);
+        z-index: 1;
+        opacity: 0.6;
+    }
+
+    .shape-1 {
+        background: linear-gradient(135deg, #c7d2fe 0%, #ddd6fe 100%);
+        width: 500px;
+        height: 500px;
+        top: -150px;
+        left: -150px;
+    }
+
+    .shape-2 {
+        background: linear-gradient(135deg, #bae6fd 0%, #e0f2fe 100%);
+        width: 400px;
+        height: 400px;
+        bottom: -100px;
+        right: -100px;
+    }
+
+    @media (max-width: 768px) {
+        .premium-card {
+            padding: 30px 20px;
+        }
+        .premium-title {
+            font-size: 1.75rem;
+        }
+    }
+</style>
+
+<div class="premium-form-wrapper">
+    <div class="shape-blob shape-1"></div>
+    <div class="shape-blob shape-2"></div>
+    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-9 col-xl-8">
+                <div class="premium-card">
+                    <div class="premium-header">
+                        <h2 class="premium-title">Đơn Xin Thôi Học</h2>
+                        <p class="premium-subtitle">Vui lòng điền đầy đủ và chính xác thông tin bên dưới để tạo đơn</p>
+                    </div>
+
+                    <form action="/word/generate" method="POST">
+                        <div class="row">
+                            <div class="col-md-6 form-group-custom">
+                                <label class="premium-label">Họ tên</label>
+                                <input type="text" name="hoTen" value="Nguyễn Lê Hải Đăng" class="premium-input form-control" placeholder="Nhập họ và tên">
+                            </div>
+
+                            <div class="col-md-6 form-group-custom">
+                                <label class="premium-label">Mã số sinh viên (MSSV)</label>
+                                <input type="text" name="mssv" value="CNTT2211031" class="premium-input form-control" placeholder="Nhập MSSV">
+                            </div>
+
+                            <div class="col-md-6 form-group-custom">
+                                <label class="premium-label">Ngày sinh</label>
+                                <input type="text" name="ngaySinh" value="30/04/2004" class="premium-input form-control" placeholder="DD/MM/YYYY">
+                            </div>
+
+                            <div class="col-md-6 form-group-custom">
+                                <label class="premium-label">Nơi sinh</label>
+                                <input type="text" name="noiSinh" value="Sóc Trăng" class="premium-input form-control" placeholder="Nhập nơi sinh">
+                            </div>
+
+                            <div class="col-12 form-group-custom">
+                                <label class="premium-label">Hộ khẩu thường trú</label>
+                                <input type="text" name="hoKhauThuongTru" value="Sóc Trăng" class="premium-input form-control" placeholder="Nhập hộ khẩu thường trú">
+                            </div>
+
+                            <div class="col-md-6 form-group-custom">
+                                <label class="premium-label">Lớp</label>
+                                <input type="text" name="lop" value="CNTT" class="premium-input form-control" placeholder="Nhập lớp">
+                            </div>
+
+                            <div class="col-md-6 form-group-custom">
+                                <label class="premium-label">Khóa</label>
+                                <input type="text" name="khoa" value="2022" class="premium-input form-control" placeholder="Ví dụ: 2022">
+                            </div>
+
+                            <div class="col-md-6 form-group-custom">
+                                <label class="premium-label">Ngày nhập học</label>
+                                <input type="text" name="ngayNhapHoc" value="09/2026" class="premium-input form-control" placeholder="MM/YYYY">
+                            </div>
+
+                            <div class="col-md-6 form-group-custom">
+                                <label class="premium-label">Thời gian ra trường</label>
+                                <input type="text" name="thoiGianRaTruong" value="09/2027" class="premium-input form-control" placeholder="MM/YYYY">
+                            </div>
+
+                            <div class="col-md-6 form-group-custom">
+                                <label class="premium-label">Ngành học</label>
+                                <input type="text" name="nganh" value="Công Nghệ Thông Tin" class="premium-input form-control" placeholder="Nhập ngành học">
+                            </div>
+
+                            <div class="col-md-6 form-group-custom">
+                                <label class="premium-label">Hệ đào tạo</label>
+                                <input type="text" name="heDaoTao" value="Chính quy" class="premium-input form-control" placeholder="Nhập hệ đào tạo">
+                            </div>
+
+                            <div class="col-md-6 form-group-custom">
+                                <label class="premium-label">Email cá nhân</label>
+                                <input type="email" name="email" value="ldang6031@gmail.com" class="premium-input form-control" placeholder="Nhập email">
+                            </div>
+
+                            <div class="col-md-6 form-group-custom">
+                                <label class="premium-label">Số điện thoại</label>
+                                <input type="text" name="soDienThoai" value="0961318943" class="premium-input form-control" placeholder="Nhập số điện thoại">
+                            </div>
+                            
+                            <div class="col-md-12 form-group-custom">
+                                <label class="premium-label">Số điện thoại phụ huynh</label>
+                                <input type="text" name="sdtPhuHuynh" value="0946436637" class="premium-input form-control" placeholder="Nhập số điện thoại phụ huynh">
+                            </div>
+
+                            <div class="col-12 form-group-custom">
+                                <label class="premium-label">Lý do thôi học</label>
+                                <textarea name="lyDo" rows="4" class="premium-input form-control" placeholder="Trình bày rõ lý do xin thôi học..."></textarea>
+                            </div>
+
+                            <div class="col-12">
+                                <label class="premium-label mb-3">Ngày làm đơn</label>
+                                <div class="row">
+                                    <div class="col-md-4 form-group-custom">
+                                        <input type="number" name="ngayLamDon" class="premium-input form-control" value="06" placeholder="Ngày">
+                                    </div>
+                                    <div class="col-md-4 form-group-custom">
+                                        <input type="number" name="thangLamDon" value="03" class="premium-input form-control" placeholder="Tháng">
+                                    </div>
+                                    <div class="col-md-4 form-group-custom">
+                                        <input type="number" name="namLamDon" value="2026" class="premium-input form-control" placeholder="Năm">
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <button type="submit" class="btn-premium">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-file-earmark-word" viewBox="0 0 16 16">
+                                <path d="M5.485 6.879a.5.5 0 1 0-.97.242l1.5 6a.5.5 0 0 0 .967.01L8 9.402l1.018 3.73a.5.5 0 0 0 .967-.01l1.5-6a.5.5 0 0 0-.97-.242l-1.036 4.144-.997-3.655a.5.5 0 0 0-.964 0l-.997 3.655L5.485 6.879z"/>
+                                <path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5v2z"/>
+                            </svg>
+                            Tải file Word
+                        </button>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

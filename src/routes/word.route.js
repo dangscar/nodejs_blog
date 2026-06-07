@@ -8,6 +8,8 @@ const wordController = require(
     "../controllers/word.controller"
 );
 
+router.get("/", wordController.index);
+
 router.post(
     "/generate",
     wordController.generate
