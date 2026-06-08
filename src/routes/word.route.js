@@ -10,9 +10,9 @@ const wordController = require(
 
 router.get("/", wordController.index);
 
-router.post(
-    "/generate",
-    wordController.generate
-);
+router.post("/generate",wordController.generate.bind(wordController));
+router.post("/generate-bao-luu",wordController.generateBaoLuu.bind(wordController));
+router.post("/generate-hoc-lai", wordController.generateHocLai.bind(wordController));
+router.post("/generate-the-sinh-vien", wordController.generateTheSinhVien.bind(wordController));
 
 module.exports = router;

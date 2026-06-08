@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/dangscar/nodejs_blog#readme",
   "dependencies": {
+    "cors": "^2.8.6",
     "docxtemplater": "^3.68.7",
     "express": "^5.2.1",
     "express-handlebars": "^8.0.3",
