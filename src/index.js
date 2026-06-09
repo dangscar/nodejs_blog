@@ -41,6 +41,11 @@ app.use(
     require("./routes/word.route")
 );
 
+app.use(
+    "/pdf",
+    require("./routes/pdf.route")
+);
+
 
 app.listen(port, () => {
     console.log(`Example app listening at http://localhost:${port}`)

@@ -2,9 +2,19 @@
 
 const fs = require("fs");
 const path = require("path");
+const libre = require("libreoffice-convert");
 
 const PizZip = require("pizzip");
 const Docxtemplater = require("docxtemplater");
+
+async function convertDocxToPdf(buffer) {
+    return new Promise((resolve, reject) => {
+        libre.convert(buffer, ".pdf", undefined, (err, done) => {
+            if (err) return reject(err);
+            resolve(done);
+        });
+    });
+}
 
 class WordController {
 
@@ -36,6 +46,7 @@ class WordController {
                 sdtPhuHuynh
             } = req.body;
 
+            const format = req.query.format || "docx";
             return this.generateDoc(
                 res,
                 "don-xin-thoi-hoc.docx",
@@ -59,7 +70,8 @@ class WordController {
                     THANG_LAM_DON: thangLamDon,
                     NAM_LAM_DON: namLamDon,
                     SDT_PHU_HUYNH: sdtPhuHuynh
-                }
+                },
+                format
             );
 
         } catch (error) {
@@ -248,8 +260,7 @@ class WordController {
         }
     }
 
-    generateDoc(res, templateName, outputFileName, data) {
-
+    async generateDoc(res, templateName, outputFileName, data, format = "docx") {
         const templatePath = path.join(
             __dirname,
             `../templates/${templateName}`
@@ -274,6 +285,26 @@ class WordController {
             compression: "DEFLATE",
         });
 
+        if (format === "pdf") {
+
+            const pdfBuffer = await convertDocxToPdf(buffer);
+
+            res.setHeader(
+                "Content-Type",
+                "application/pdf"
+            );
+
+            res.setHeader(
+                "Content-Disposition",
+                `attachment; filename=${outputFileName.replace(
+                ".docx",
+                ".pdf"
+                )}`
+            );
+
+            return res.send(pdfBuffer);
+        }
+
         res.setHeader(
             "Content-Type",
             "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
@@ -286,6 +317,8 @@ class WordController {
 
         return res.send(buffer);
     }
+
+
 }
 
 module.exports = new WordController();

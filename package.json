@@ -26,8 +26,10 @@
     "docxtemplater": "^3.68.7",
     "express": "^5.2.1",
     "express-handlebars": "^8.0.3",
+    "libreoffice-convert": "^1.8.1",
     "multer": "^2.1.1",
-    "pizzip": "^3.2.0"
+    "pizzip": "^3.2.0",
+    "puppeteer": "^25.1.0"
   },
   "devDependencies": {
     "morgan": "^1.10.1",

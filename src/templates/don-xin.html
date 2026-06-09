@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<style>
+body{
+    font-family:"Times New Roman",serif;
+    width: 210mm;
+    min-height: 297mm;
+    padding: 20mm;
+    box-sizing: border-box;
+    font-size:18px;
+    line-height:1.8;
+}
+
+.center{
+    text-align:center;
+}
+
+.title{
+    font-weight:bold;
+    font-size:24px;
+    margin-top:40px;
+    margin-bottom:30px;
+}
+
+.row{
+    display:flex;
+    margin-bottom:8px;
+}
+
+.label{
+    white-space:nowrap;
+}
+
+.value{
+    flex:1;
+    border-bottom:1px dotted #000;
+    margin:0 8px;
+    padding-left:5px;
+}
+
+.reason{
+    border-bottom:1px dotted #000;
+    min-height:35px;
+    margin-top:10px;
+}
+
+.signature{
+    display:flex;
+    justify-content:space-between;
+    margin-top:30px;
+}
+
+.bottom{
+    display:flex;
+    justify-content:space-between;
+    margin-top:180px;
+    font-weight:bold;
+}
+</style>
+</head>
+<body>
+
+<div class="center">
+    <div style="font-weight:bold;font-size:20px">
+        CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM
+    </div>
+    <div style="font-weight:bold; margin-top: -20px;">
+        Độc lập - Tự do - Hạnh phúc
+    </div>
+
+    <div class="title">
+        ĐƠN XIN THÔI HỌC
+    </div>
+</div>
+
+<p>
+    <b>Kính gửi:</b>
+    Ban Giám hiệu Trường Đại học Kỹ thuật - Công nghệ Cần Thơ
+</p>
+
+<div class="row">
+    <span class="label">Tôi tên:</span>
+    <span class="value">{{hoTen}}</span>
+
+    <span class="label">Mã số sinh viên:</span>
+    <span class="value">{{mssv}}</span>
+</div>
+
+<div class="row">
+    <span class="label">Ngày sinh:</span>
+    <span class="value">{{ngaySinh}}</span>
+
+    <span class="label">Nơi sinh:</span>
+    <span class="value">{{noiSinh}}</span>
+</div>
+
+<div class="row">
+    <span class="label">Hộ khẩu thường trú:</span>
+    <span class="value">{{hoKhauThuongTru}}</span>
+</div>
+
+<div class="row">
+    <span class="label">Là sinh viên lớp:</span>
+    <span class="value">{{lop}}</span>
+
+    <span class="label">Khóa:</span>
+    <span class="value">{{khoa}}</span>
+</div>
+
+<div class="row">
+    <span class="label">Ngày nhập học:</span>
+    <span class="value">{{ngayNhapHoc}}</span>
+
+    <span class="label">Thời gian ra trường:</span>
+    <span class="value">{{thoiGianRaTruong}}</span>
+</div>
+
+<div class="row">
+    <span class="label">Ngành:</span>
+    <span class="value">{{nganh}}</span>
+
+    <span class="label">Hệ đào tạo:</span>
+    <span class="value">{{heDaoTao}}</span>
+</div>
+
+<div class="row">
+    <span class="label">Email:</span>
+    <span class="value">{{email}}</span>
+
+    <span class="label">Số ĐT:</span>
+    <span class="value">{{soDienThoai}}</span>
+</div>
+
+<p>
+Nay tôi làm đơn này kính gửi Ban Giám hiệu cho phép tôi được thôi học tại
+Trường Đại học Kỹ thuật - Công nghệ Cần Thơ.
+</p>
+
+<p>Lý do:</p>
+
+<div class="reason">{{lyDo}}</div>
+
+<p>
+Rất mong được sự chấp thuận của Nhà trường./.
+</p>
+
+<div class="signature">
+    <div>
+        <b>Ý kiến của phụ huynh</b>
+        <br><br><br><br><br>
+        Số điện thoại: {{sdtPhuHuynh}}
+    </div>
+
+    <div style="text-align:center">
+        Cần Thơ, ngày {{ngay}} tháng {{thang}} năm {{nam}}
+        <br>
+        <b>Người làm đơn</b>
+    </div>
+</div>
+
+<div class="bottom">
+    <div>Ý kiến của P.CTCT-SV-KN</div>
+    <div>Ý kiến của CVHT</div>
+    <div>Ý kiến của Khoa</div>
+</div>
+
+</body>
+</html>
