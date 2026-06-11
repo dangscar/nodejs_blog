@@ -105,6 +105,8 @@ class WordController {
                 namLamDon
             } = req.body;
 
+            const format = req.query.format || "docx";
+
             return this.generateDoc(
                 res,
                 "don-bao-luu.docx",
@@ -130,7 +132,8 @@ class WordController {
                     NGAY_LAM_DON: ngayLamDon,
                     THANG_LAM_DON: thangLamDon,
                     NAM_LAM_DON: namLamDon
-                }
+                },
+                format
             );
 
         } catch (error) {
@@ -166,6 +169,8 @@ class WordController {
                 namLamDon
             } = req.body;
 
+            const format = req.query.format || "docx";
+
             return this.generateDoc(
                 res,
                 "don-hoc-lai.docx",
@@ -193,7 +198,8 @@ class WordController {
                     NGAY_LAM_DON: ngayLamDon,
                     THANG_LAM_DON: thangLamDon,
                     NAM_LAM_DON: namLamDon
-                }
+                },
+                format
             );
 
         } catch (error) {
@@ -226,6 +232,8 @@ class WordController {
                 namLamDon
             } = req.body;
 
+            const format = req.query.format || "docx";
+
             return this.generateDoc(
                 res,
                 "don-cap-lai-the-sinh-vien.docx",
@@ -252,7 +260,126 @@ class WordController {
                     NGAY_LAM_DON: ngayLamDon,
                     THANG_LAM_DON: thangLamDon,
                     NAM_LAM_DON: namLamDon
-                }
+                },
+                format
+            );
+
+        } catch (error) {
+            next(error);
+        }
+    }
+
+    async generateGiayGioiThieuThucTap(req, res, next) {
+        try {
+
+            const {
+                hoTen,
+                mssv,
+                khoa,
+                nganh,
+
+                donViThucTap,
+
+                ngayBatDau,
+                ngayKetThuc,
+
+                ngayCap,
+                thangCap,
+                namCap,
+
+                ngayHetHan
+            } = req.body;
+
+            const format = req.query.format || "docx";
+
+            return this.generateDoc(
+                res,
+                "giay-gioi-thieu-thuc-tap.docx",
+                "giay_gioi_thieu_thuc_tap.docx",
+                {
+                    HO_TEN: hoTen,
+                    MSSV: mssv,
+
+                    KHOA: khoa,
+                    NGANH: nganh,
+
+                    DON_VI_THUC_TAP: donViThucTap,
+
+                    NGAY_BD: ngayBatDau,
+                    NGAY_KT: ngayKetThuc,
+
+                    NGAY_CAP: ngayCap,
+                    THANG_CAP: thangCap,
+                    NAM_CAP: namCap,
+
+                    NGAY_HET_HAN: ngayHetHan
+                },
+                format
+            );
+
+        } catch (error) {
+            next(error);
+        }
+    }
+
+    async generateGiayXacNhanHCKK(req, res, next) {
+        try {
+
+            const {
+                hoTen,
+                gioiTinh,
+                mssv,
+                khoaHoc,
+
+                lop,
+                nganh,
+
+                ngaySinh,
+                noiSinh,
+
+                soDienThoai,
+
+                xaPhuongThuongTru,
+                tinhThanhThuongTru,
+
+                hoanCanhGiaDinh,
+
+                ngayLamDon,
+                thangLamDon,
+                namLamDon
+            } = req.body;
+
+            const format = req.query.format || "docx";
+
+            return this.generateDoc(
+                res,
+                "giay-xac-nhan-hckk.docx",
+                "giay_xac_nhan_hoan_canh_kho_khan.docx",
+                {
+                    HO_TEN: hoTen,
+                    GIOI_TINH: gioiTinh,
+
+                    MSSV: mssv,
+                    KHOA: khoaHoc,
+
+                    LOP: lop,
+                    NGANH: nganh,
+
+                    NGAY_SINH: ngaySinh,
+                    NOI_SINH: noiSinh,
+
+                    SO_DIEN_THOAI: soDienThoai,
+
+                    XA_PHUONG_THUONG_TRU: xaPhuongThuongTru,
+                    TINH_THANH_THUONG_TRU: tinhThanhThuongTru,
+
+                    HOAN_CANH_GIA_DINH: hoanCanhGiaDinh,
+
+                    NGAY_LAM_DON: ngayLamDon,
+                    THANG_LAM_DON: thangLamDon,
+                    NAM_LAM_DON: namLamDon
+                },
+                format
             );
 
         } catch (error) {
@@ -317,7 +444,6 @@ class WordController {
 
         return res.send(buffer);
     }
-
 
 }
 

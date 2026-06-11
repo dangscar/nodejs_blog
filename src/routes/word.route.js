@@ -14,5 +14,7 @@ router.post("/generate",wordController.generate.bind(wordController));
 router.post("/generate-bao-luu",wordController.generateBaoLuu.bind(wordController));
 router.post("/generate-hoc-lai", wordController.generateHocLai.bind(wordController));
 router.post("/generate-the-sinh-vien", wordController.generateTheSinhVien.bind(wordController));
+router.post("/generate-giay-gioi-thieu", wordController.generateGiayGioiThieuThucTap.bind(wordController));
+router.post("/generate-xac-nhan-kho-khan", wordController.generateGiayXacNhanHCKK.bind(wordController));
 
 module.exports = router;
