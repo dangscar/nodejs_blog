@@ -24,6 +24,7 @@
   "dependencies": {
     "cors": "^2.8.6",
     "docxtemplater": "^3.68.7",
+    "docxtemplater-image-module-free": "^1.1.1",
     "express": "^5.2.1",
     "express-handlebars": "^8.0.3",
     "libreoffice-convert": "^1.8.1",

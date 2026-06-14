@@ -7,6 +7,9 @@ const libre = require("libreoffice-convert");
 const PizZip = require("pizzip");
 const Docxtemplater = require("docxtemplater");
 
+const ImageModule = require("docxtemplater-image-module-free");
+
+
 async function convertDocxToPdf(buffer) {
     return new Promise((resolve, reject) => {
         libre.convert(buffer, ".pdf", undefined, (err, done) => {
@@ -69,7 +72,8 @@ class WordController {
                     NGAY_LAM_DON: ngayLamDon,
                     THANG_LAM_DON: thangLamDon,
                     NAM_LAM_DON: namLamDon,
-                    SDT_PHU_HUYNH: sdtPhuHuynh
+                    SDT_PHU_HUYNH: sdtPhuHuynh,
+                    ANH_THE: req.file?.path
                 },
                 format
             );
@@ -131,7 +135,8 @@ class WordController {
                     SDT_PHU_HUYNH: sdtPhuHuynh,
                     NGAY_LAM_DON: ngayLamDon,
                     THANG_LAM_DON: thangLamDon,
-                    NAM_LAM_DON: namLamDon
+                    NAM_LAM_DON: namLamDon,
+                    ANH_THE: req.file?.path
                 },
                 format
             );
@@ -142,70 +147,71 @@ class WordController {
     }
 
     async generateHocLai(req, res, next) {
-        try {
+    try {
 
-            const {
-                hoTen,
-                mssv,
-                ngaySinh,
-                noiSinh,
-                hoKhauThuongTru,
-                lop,
-                khoa,
-                nganh,
-                heDaoTao,
-                email,
-                soDienThoai,
-                namHoc,
-                soHocKyTamNghi,
-                lyDo,
-                soQuyetDinh,
-                ngayQuyetDinh,
-                thangQuyetDinh,
-                namQuyetDinh,
-                sdtPhuHuynh,
-                ngayLamDon,
-                thangLamDon,
-                namLamDon
-            } = req.body;
+        const {
+            hoTen,
+            mssv,
+            ngaySinh,
+            noiSinh,
+            hoKhauThuongTru,
+            lop,
+            khoa,
+            nganh,
+            heDaoTao,
+            email,
+            soDienThoai,
+            namHoc,
+            soHocKyTamNghi,
+            lyDo,
+            soQuyetDinh,
+            ngayQuyetDinh,
+            thangQuyetDinh,
+            namQuyetDinh,
+            sdtPhuHuynh,
+            ngayLamDon,
+            thangLamDon,
+            namLamDon
+        } = req.body;
 
-            const format = req.query.format || "docx";
+        const format = req.query.format || "docx";
 
-            return this.generateDoc(
-                res,
-                "don-hoc-lai.docx",
-                "don_hoc_lai.docx",
-                {
-                    HO_TEN: hoTen,
-                    MSSV: mssv,
-                    NGAY_SINH: ngaySinh,
-                    NOI_SINH: noiSinh,
-                    HO_KHAU_THUONG_TRU: hoKhauThuongTru,
-                    LOP: lop,
-                    KHOA: khoa,
-                    NGANH: nganh,
-                    HE_DAO_TAO: heDaoTao,
-                    EMAIL: email,
-                    SO_DIEN_THOAI: soDienThoai,
-                    NAM_HOC: namHoc,
-                    SO_HOC_KY_TAM_NGHI: soHocKyTamNghi,
-                    LY_DO: lyDo,
-                    SO_QUYET_DINH: soQuyetDinh,
-                    NGAY_QUYET_DINH: ngayQuyetDinh,
-                    THANG_QUYET_DINH: thangQuyetDinh,
-                    NAM_QUYET_DINH: namQuyetDinh,
-                    SDT_PHU_HUYNH: sdtPhuHuynh,
-                    NGAY_LAM_DON: ngayLamDon,
-                    THANG_LAM_DON: thangLamDon,
-                    NAM_LAM_DON: namLamDon
-                },
-                format
-            );
+        return this.generateDoc(
+            res,
+            "don-hoc-lai.docx",
+            "don_hoc_lai.docx",
+            {
+                HO_TEN: hoTen,
+                MSSV: mssv,
+                NGAY_SINH: ngaySinh,
+                NOI_SINH: noiSinh,
+                HO_KHAU_THUONG_TRU: hoKhauThuongTru,
+                LOP: lop,
+                KHOA: khoa,
+                NGANH: nganh,
+                HE_DAO_TAO: heDaoTao,
+                EMAIL: email,
+                SO_DIEN_THOAI: soDienThoai,
+                NAM_HOC: namHoc,
+                SO_HOC_KY_TAM_NGHI: soHocKyTamNghi,
+                LY_DO: lyDo,
+                SO_QUYET_DINH: soQuyetDinh,
+                NGAY_QUYET_DINH: ngayQuyetDinh,
+                THANG_QUYET_DINH: thangQuyetDinh,
+                NAM_QUYET_DINH: namQuyetDinh,
+                SDT_PHU_HUYNH: sdtPhuHuynh,
+                NGAY_LAM_DON: ngayLamDon,
+                THANG_LAM_DON: thangLamDon,
+                NAM_LAM_DON: namLamDon,
+                ANH_THE: req.file?.path
+            },
+            format
+        );
 
-        } catch (error) {
-            next(error);
-        }
+    } catch (error) {
+        next(error);
     }
+}
 
     async generateTheSinhVien(req, res, next) {
         try {
@@ -259,7 +265,8 @@ class WordController {
 
                     NGAY_LAM_DON: ngayLamDon,
                     THANG_LAM_DON: thangLamDon,
-                    NAM_LAM_DON: namLamDon
+                    NAM_LAM_DON: namLamDon,
+                    ANH_THE: req.file?.path
                 },
                 format
             );
@@ -377,7 +384,8 @@ class WordController {
 
                     NGAY_LAM_DON: ngayLamDon,
                     THANG_LAM_DON: thangLamDon,
-                    NAM_LAM_DON: namLamDon
+                    NAM_LAM_DON: namLamDon,
+                    ANH_THE: req.file?.path
                 },
                 format
             );
@@ -400,9 +408,22 @@ class WordController {
 
         const zip = new PizZip(content);
 
+        const imageModule = new ImageModule({
+            centered: false,
+
+            getImage(tagValue) {
+                return fs.readFileSync(tagValue);
+            },
+
+            getSize() {
+                return [120, 80];
+            }
+        });
+
         const doc = new Docxtemplater(zip, {
             paragraphLoop: true,
             linebreaks: true,
+            modules: [imageModule]
         });
 
         doc.render(data);
